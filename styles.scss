@@ -1,0 +1,84 @@
+$circle-size: 100px;
+$circle-color: yellow;
+
+body {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f0f0f0;
+
+  .circle {
+    width: $circle-size;
+    height: $circle-size;
+    background-color: $circle-color;
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: opacity 0.5s ease;
+    animation: moveAndTransform 5s infinite;
+
+    &:hover {
+      opacity: 0;
+    }
+
+    @keyframes moveAndTransform {
+      0% {
+        top: 0;
+        left: 0;
+        border-radius: 50%;
+      }
+      25% {
+        top: 0;
+        left: 100%;
+        transform: translateX(-100%);
+        border-radius: 0;
+      }
+      50% {
+        top: 100%;
+        left: 100%;
+        transform: translate(-100%, -100%);
+        border-radius: 50%;
+      }
+      75% {
+        top: 100%;
+        left: 0;
+        transform: translateY(-100%);
+        border-radius: 0;
+      }
+      100% {
+        top: 0;
+        left: 0;
+        border-radius: 50%;
+      }
+    }
+  }
+
+  .loading-bar {
+    width: 60%;
+    height: 10px;
+    background-color: #ddd;
+    overflow: hidden;
+    position: relative;
+
+    &::before {
+      content: "";
+      width: 0;
+      height: 100%;
+      background-color: blue;
+      position: absolute;
+      animation: fillBar 3s infinite;
+    }
+  }
+
+  @keyframes fillBar {
+    0% {
+      width: 0;
+    }
+    100% {
+      width: 100%;
+    }
+  }
+}
